@@ -1252,10 +1252,9 @@ img {
 }
 
 .gal-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 200px;
-  gap: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
 }
 
 .gi {
@@ -1263,32 +1262,33 @@ img {
   border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
+  background: var(--warm-sand);
+  width: 100%;
 }
 
-.gi.tall {
-  grid-row: span 2;
-}
-
-.gi.wide {
-  grid-column: span 2;
+/* Hapus semua span dan aspect-ratio */
+.gi.tall,
+.gi.wide,
+.gi:nth-child(1) {
+  grid-column: unset;
+  grid-row: unset;
 }
 
 .gi img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: transform 0.6s ease;
+  height: auto;
   display: block;
+  object-fit: contain;
+  transition: transform 0.6s ease;
 }
 
 .gi:hover img {
-  transform: scale(1.08);
+  transform: scale(1.03);
 }
 
 .gi-ph {
   width: 100%;
-  height: 100%;
+  padding: 4rem 0;
   background: linear-gradient(135deg, var(--rose-pale), var(--sage-pale));
   display: none;
   align-items: center;
@@ -1301,13 +1301,13 @@ img {
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(transparent, rgba(61, 43, 34, 0.6));
+  background: linear-gradient(transparent, rgba(61, 43, 34, 0.55));
   color: rgba(255, 255, 255, 0.9);
   font-family: var(--ff-display);
   font-size: 0.78rem;
   font-style: italic;
   text-align: center;
-  padding: 0.75rem 0.5rem 0.5rem;
+  padding: 1.5rem 0.5rem 0.6rem;
   opacity: 0;
   transform: translateY(5px);
   transition: var(--t);
@@ -1320,16 +1320,7 @@ img {
 
 @media (max-width: 520px) {
   .gal-grid {
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 160px;
-  }
-
-  .gi.tall {
-    grid-row: span 2;
-  }
-
-  .gi.wide {
-    grid-column: span 2;
+    gap: 0.5rem;
   }
 }
 
